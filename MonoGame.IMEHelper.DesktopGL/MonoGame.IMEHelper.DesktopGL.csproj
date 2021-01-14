@@ -1,12 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net45</TargetFramework>
     <AssemblyName>MonoGame.IMEHelper</AssemblyName>
     <RootNamespace>MonoGame.IMEHelper</RootNamespace>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DESKTOPGL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <DefineConstants>TRACE;DESKTOPGL</DefineConstants>
   </PropertyGroup>
 
@@ -14,14 +19,18 @@
     <DefineConstants>TRACE;DESKTOPGL</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DefineConstants>TRACE;DESKTOPGL</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.2">
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
+    <ProjectReference Include="..\MonoGame.IMEHelper.Common\MonoGame.IMEHelper.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-     <PackageReference Include="MonoGame.IMEHelper.Common" Version="0.9.0" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\MonoGame.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
